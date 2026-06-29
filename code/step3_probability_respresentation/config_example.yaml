@@ -1,0 +1,12 @@
+TARGET_MODEL_PATH: /path/to/bigcode/starcoder
+INPUT_YAML: /path/to/input_dataset.yaml
+OUTPUT_JSONL: /path/to/output_inference.jsonl
+WEIGHT_FILE: /path/to/triviality_weights.jsonl
+USE_CACHE: true
+SAVE_INTERVAL: 10
+MAX_NEW_TOKENS_GENERATION: 128
+MAX_CONTEXT_LEN: 8192
+MAX_WORKERS: 4
+FT_PORT: 8250
+TIMEOUT_SECONDS: 150
+TEMP: 0.0

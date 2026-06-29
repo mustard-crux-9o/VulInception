@@ -1,0 +1,11 @@
+Model,Forget-set Selector,VMI-Bench VR,Unseen CVE VR,Pass@1
+GPT-J 6B,Original,0.33,0.07,0.12
+GPT-J 6B,Random,0.27,0.06,0.10
+GPT-J 6B,Gotcha,0.15,0.05,0.11
+GPT-J 6B,VulInception,0.11,0.04,0.10
+GPT-J 6B,GT (Oracle),0.09,0.04,0.10
+StarCoder 7B,Original,0.38,0.08,0.24
+StarCoder 7B,Random,0.31,0.08,0.21
+StarCoder 7B,Gotcha,0.22,0.06,0.22
+StarCoder 7B,VulInception,0.17,0.05,0.20
+StarCoder 7B,GT (Oracle),0.15,0.05,0.20

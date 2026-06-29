@@ -1,0 +1,20 @@
+# Single-GPU accelerated training (vLLM colocate during GRPO rollouts)
+num_epochs: 20
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+num_generations: 4
+logging_steps: 10
+save_strategy: "steps"
+save_steps: 100
+save_total_limit: 3
+dataset_size: null
+max_prompt_length: 512
+optim: "adamw_bnb_8bit"
+use_vllm: true
+vllm_mode: "colocate"
+vllm_tensor_parallel_size: 1
+vllm_gpu_memory_utilization: 0.25
+vllm_enable_sleep_mode: true
+save_only_model: false
+dataloader_num_workers: 2
+dataloader_pin_memory: true

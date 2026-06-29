@@ -1,0 +1,6 @@
+{
+  "num_rows": 918,
+  "format": "jsonl",
+  "required_fields": ["ID", "Prompt", "Insecure_code"],
+  "max_functions_per_cve": 5
+}

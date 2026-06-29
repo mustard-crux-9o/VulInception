@@ -1,0 +1,2 @@
+name: "stack_gotcha"
+yaml_source: "benchmarks/vmi_bench_stack.yaml"

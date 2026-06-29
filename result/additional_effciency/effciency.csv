@@ -1,0 +1,8 @@
+﻿Method,Train Time(s),Inference Time(s)
+Gotcha,3210.9806,16.406
+AdvPromptMIA,37974.7764,194.119
+CodeMI,100.8874,0.509
+PPL,116.637,0.51
+zlib,1632.2648,8.338
+SynPrune,115.121,0.515
+Ours,2908.8326,14.811

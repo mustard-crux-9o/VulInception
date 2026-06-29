@@ -1,0 +1,17 @@
+# Main Hydra configuration for code vulnerability unlearning
+# Usage: python purge_code.py dataset=pile model=gpt_j_6b training=code_fast
+
+defaults:
+  - dataset: pile
+  - model: gpt_j_6b
+  - training: code_fast
+  - reward: code_binary
+  - paths: code_default
+  - _self_
+
+hydra:
+  run:
+    dir: outputs/code/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: multirun/code/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    subdir: ${hydra.job.num}

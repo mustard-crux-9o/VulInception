@@ -1,0 +1,49 @@
+# Byte-compiled / optimized
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.env
+scripts/env.sh
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Runtime artifacts
+wandb/
+outputs/
+models/
+logs/
+eval_outputs/
+scripts/wandb/
+scripts/outputs/
+src/outputs/
+
+# Generated data (keep README placeholders)
+data/CODE/**/*
+!data/CODE/pile/.gitkeep
+!data/CODE/stack/.gitkeep
+data/forget_sets/**/*
+!data/forget_sets/.gitkeep
+
+# Benchmarks (shipped with repo)
+benchmarks/**/*
+!benchmarks/README.md
+!benchmarks/vmi_bench_pile.yaml
+!benchmarks/vmi_bench_stack.yaml
+!benchmarks/securityeval/**
+!benchmarks/unseen2026_cve/README.md
+!benchmarks/humaneval/**
+!benchmarks/predictions/**
+
+# Local overrides
+src/configs/paths/local.yaml
+
+# Crash dumps
+core.*

@@ -1,0 +1,5 @@
+name: "starcoder"
+hf_model_id: "bigcode/starcoder"
+max_completion_length: 256
+attn_implementation: "eager"
+gradient_checkpointing: true

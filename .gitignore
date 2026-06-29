@@ -1,0 +1,14 @@
+# Generated caches
+**/__pycache__/
+*.py[cod]
+
+# Embedded upstream repository metadata
+result/RQ4_usefulness/PURGE/.git/
+result/RQ5_usefulness/PURGE/.git/
+
+# Large generated model checkpoints
+result/RQ4_usefulness/PURGE/unlearnt_models/
+result/RQ5_usefulness/PURGE/unlearnt_models/
+
+# Local OS/editor files
+.DS_Store
