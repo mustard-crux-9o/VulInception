@@ -1,0 +1,4 @@
+name: "gpt-neox-20b"
+hf_model_id: "EleutherAI/gpt-neox-20b"
+max_completion_length: 256
+gradient_checkpointing: true

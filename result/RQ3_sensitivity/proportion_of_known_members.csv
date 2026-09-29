@@ -1,0 +1,4 @@
+﻿Proportion of known members,starcoder15b precision,starcoder15b recall,starcoder15b F1,starcoderbase7b precision,starcoderbase7b recall,starcoderbase7b F1,gptneox20b precision,gptneox20b recall,gptneox20b F1,gptj6b precision,gptj6b recall,gptj6b F1
+20%,0.7857,0.8154,0.8003,0.775,0.8336,0.8032,0.8126,0.8095,0.8111,0.8234,0.7905,0.8066
+50%,0.8599,0.862,0.8609,0.8482,0.8523,0.8502,0.8174,0.8323,0.8248,0.8383,0.8537,0.8459
+80%,0.8704,0.8494,0.8598,0.8861,0.8434,0.8642,0.8661,0.8333,0.8494,0.8862,0.8258,0.8549

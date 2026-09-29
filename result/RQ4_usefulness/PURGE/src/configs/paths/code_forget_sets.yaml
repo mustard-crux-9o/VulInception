@@ -1,0 +1,6 @@
+# Alternate forget-set selectors (Random / Gotcha / Groundtruth) for RQ4.
+code_data_dir: "../data/forget_sets"
+output_base: "../models/code"
+forget_dataset_file: "${paths.code_data_dir}/${dataset.name}/forget_dataset.json"
+forget_patterns_file: "${paths.code_data_dir}/${dataset.name}/forget_patterns.json"
+output_dir: "${paths.output_base}/${model.name}-${dataset.name}-${reward.type}"

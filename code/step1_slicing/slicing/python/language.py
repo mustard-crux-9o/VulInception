@@ -1,0 +1,180 @@
+import tree_sitter_python as tspython
+from tree_sitter import Language as TSLanguage
+from tree_sitter import Node
+
+from ..language import Language
+
+
+class PYTHON(Language):
+    extensions = ["py"]
+    tslanguage = TSLanguage(tspython.language())
+
+    query_call = "(call)@name"
+    query_argument = """
+    (call
+        arguments: (argument_list
+            [
+                (identifier)@name
+                (attribute
+                    attribute: (identifier)@name
+                )
+                (keyword_argument
+                    value: (identifier)@name
+                )
+            ]
+        )
+    )
+    """
+    query_import_identifier = """
+    (import_statement
+        name: [
+            (dotted_name)@name
+            (aliased_import
+                name: (dotted_name)@name
+            )
+        ]
+    )
+    (import_from_statement
+        module_name: [
+            (dotted_name)@name
+            (relative_import
+                (dotted_name)@name
+            )
+        ]
+    )
+    """
+    query_function_parameter = """
+        (parameters
+            (identifier)@name
+        )
+        (typed_parameter
+            (identifier)@name
+        )
+    """
+
+    query_field_name = """
+        (assignment
+            left: (identifier)@name
+        )
+        (assignment
+            left: (attribute
+                attribute: (identifier)@name
+            )
+        )
+    """
+
+    query_class = "(class_definition)@name"
+
+    JUMP_STATEMENTS = [
+        "break_statement",
+        "continue_statement",
+        "return_statement",
+    ]
+
+    BLOCK_STATEMENTS = [
+        "class_definition",
+        "decorated_definition",
+        "for_statement",
+        "function_definition",
+        "if_statement",
+        "elif_clause",
+        "match_statement",
+        "try_statement",
+        "while_statement",
+        "with_statement",
+        "case_clause",
+    ]
+
+    SIMPLE_STATEMENTS = [
+        "assert_statement",
+        "break_statement",
+        "continue_statement",
+        "delete_statement",
+        "exec_statement",
+        "expression_statement",
+        "future_import_statement",
+        "global_statement",
+        "import_from_statement",
+        "import_statement",
+        "nonlocal_statement",
+        "pass_statement",
+        "print_statement",
+        "raise_statement",
+        "return_statement",
+        "type_alias_statement",
+    ]
+
+    LOOP_STATEMENTS = ["for_statement", "while_statement"]
+
+    CLASS_STATEMENTS = [
+        "class_definition",
+    ]
+
+    FUNCTION_STATEMENTS = [
+        "function_definition",
+    ]
+
+    FIELD_STATEMENTS = [
+        "assignment",
+    ]
+
+    EXIT_STATEMENTS = [
+        "return_statement",
+    ]
+
+    IF_STATEMENTS = [
+        "if_statement",
+        "elif_clause",
+    ]
+
+    SWITCH_STATEMENTS = [
+        "match_statement",
+    ]
+
+    CONTINUE_STATEMENTS = [
+        "continue_statement",
+    ]
+
+    BREAK_STATEMENTS = [
+        "break_statement",
+    ]
+
+    EXCLUDED_NODE_FIELDS: list[str] = ["body"]
+
+    @staticmethod
+    def query_left_value(text):
+        return f"""
+            (assignment
+                left: (identifier)@left
+                (#eq? @left "{text}")
+            )
+            (for_statement
+                left: (identifier)@left
+                (#eq? @left "{text}")
+            )
+            (augmented_assignment
+                left: (identifier)@left
+                (#eq? @left "{text}")
+            )
+        """
+
+    @classmethod
+    def is_field_node(cls, node: Node) -> bool:
+        """
+        Checks if the given node is a field (attribute or member variable) definition.
+
+        Args:
+            node (Node): The tree-sitter node to check.
+
+        Returns:
+            bool: True if the node is a field definition, False otherwise.
+        """
+        if node.type in cls.FIELD_STATEMENTS:
+            return True
+        if node.type == "expression_statement":
+            if node.named_child_count != 1:
+                return False
+            for child in node.named_children:
+                if child.type == "assignment":
+                    return True
+        return False

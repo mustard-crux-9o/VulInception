@@ -1,0 +1,5 @@
+name: "starcoderbase-7b"
+hf_model_id: "bigcode/starcoderbase-7b"
+max_completion_length: 256
+attn_implementation: "eager"
+gradient_checkpointing: true

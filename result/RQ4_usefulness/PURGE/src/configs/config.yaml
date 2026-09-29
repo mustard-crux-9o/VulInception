@@ -1,0 +1,19 @@
+# Main Hydra configuration file
+# Override any parameter from CLI: python purge.py entity=confucius training.num_epochs=20
+
+defaults:
+  - entity: 1_Stephen_King
+  - model: phi_3_mini_4k_instruct_3.8b
+  - training: exponential_decay
+  - reward: exponential_decay
+  - paths: default
+  - _self_
+
+# Hydra settings
+hydra:
+  run:
+    dir: outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    subdir: ${hydra.job.num}
+

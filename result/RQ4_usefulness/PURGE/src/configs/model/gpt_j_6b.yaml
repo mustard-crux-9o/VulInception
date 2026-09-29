@@ -1,0 +1,4 @@
+name: "gpt-j-6b"
+hf_model_id: "EleutherAI/gpt-j-6b"
+max_completion_length: 256
+gradient_checkpointing: true
